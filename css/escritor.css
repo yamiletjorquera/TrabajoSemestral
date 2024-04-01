@@ -1,0 +1,19 @@
+body {
+    margin: 0%;
+}
+
+#boxes {
+    display: block;
+}
+
+#leftbox {
+    float: left;
+    /*background: rgb(255, 0, 0);*/
+    width: 20%;
+}
+
+#rightbox {
+    float: right;
+    /*background: rgb(0, 255, 0);*/
+    width: 80%;
+}
