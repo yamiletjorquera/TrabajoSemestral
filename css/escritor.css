@@ -8,12 +8,26 @@ body {
 
 #leftbox {
     float: left;
-    /*background: rgb(255, 0, 0);*/
+    background: rgb(197, 197, 197);
     width: 20%;
 }
 
 #rightbox {
     float: right;
-    /*background: rgb(0, 255, 0);*/
+    background: rgb(236, 236, 236);
     width: 80%;
+}
+
+#autor_name {
+    display: block;
+}
+
+#autor_picture {
+    max-width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    height: auto;
 }
