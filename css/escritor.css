@@ -6,20 +6,29 @@ body {
     display: block;
 }
 
-#leftbox {
+#top_leftbox {
     float: left;
-    background: rgb(197, 197, 197);
     width: 20%;
 }
 
-#rightbox {
+#top_middlebox {
+    float: left;
+    width: 15%;
+}
+
+#top_rightbox {
     float: right;
-    background: rgb(236, 236, 236);
-    width: 80%;
+    width: 65%;
 }
 
 #autor_name {
     display: block;
+    padding-top: 7.5%;
+}
+
+#autor_bio {
+    display: block;
+    padding-top: 4.5%;
 }
 
 #autor_picture {
