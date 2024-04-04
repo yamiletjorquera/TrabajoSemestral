@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escritor</title>
-    <link rel="stylesheet" href="css/escritor.css">
+    <link rel="stylesheet" href="css/Escritor.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -26,20 +26,6 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                  </li>
                 </ul>
                 <form class="d-flex" role="search">
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -52,11 +38,21 @@
     </header>
     <main>
         <div id="boxes">
-            <div id="leftbox">
-                <img src="img/escritor/Tolkien.jpg" class="rounded" alt="..." id="autor_picture">
+            <div id="top_leftbox">
+              <img src="img/escritor/Tolkien.jpg" class="rounded" alt="..." id="autor_picture">
             </div>
-            <div id="rightbox" id="autor_name">
-                <h1>Tolkien</h1>
+            <div id="top_middlebox">
+              <h1 id="autor_name">Tolkien</h1>
+            </div>
+            <div id="top_rightbox">
+              <h6 id="autor_bio">Biografia:<br><br>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
+              id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
+              dignissimos qui laudantium. <br><br>
+            
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias laudantium reiciendis ut provident. 
+              Fuga dolores aut, necessitatibus in atque reprehenderit nostrum exercitationem soluta possimus, 
+              praesentium quasi cum laborum nesciunt doloribus.</h6>
             </div>
         </div>
     </main>
