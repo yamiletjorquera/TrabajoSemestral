@@ -1,5 +1,9 @@
-head {
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    display: block;
-    margin: auto;
+body {
+   background-color: burlywood;
+}
+h1{
+    color:brown;
+}
+img{
+    opacity: 50%;
 }
