@@ -10,66 +10,124 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <header>
-        <!-- NavBar inicio -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
+  <header>
+    <!-- NavBar inicio -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <!-- NavBar fin -->
+  </header>
+  <main>
+    <div class="conteiner text-center">
+      <div class="row">
+        <div class="col-2 h-100">
+          <img src="/img/escritor/Tolkien.jpg" class="rounded" alt="..." id="autor_picture">
+        </div>
+        <div class="col-10">
+          <div class="row h-100">
+            <div class="col-10">
+              <h1 id="autor_name">J. R. R. Tolkien</h1>
             </div>
-          </nav>
-          <!-- NavBar fin -->
-    </header>
-    <main>
-      <div class="conteiner text-center">
-        <div class="row">
-          <div class="col-2 h-100">
-            <img src="/img/escritor/Tolkien.jpg" class="rounded" alt="..." id="autor_picture">
-          </div>
-          <div class="col-10">
-            <div class="row h-100">
-              <div class="col-10">
-                <h1 id="autor_name">Tolkien</h1>
-              </div>
-              <div class="col-10">
-                <h6 id="autor_bio">Biografia:<br><br>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
-                  id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
-                  dignissimos qui laudantium. <br><br>
-                
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias laudantium reiciendis ut provident. 
-                  Fuga dolores aut, necessitatibus in atque reprehenderit nostrum exercitationem soluta possimus, 
-                  praesentium quasi cum laborum nesciunt doloribus.</h6>
-              </div>
+            <div class="col-10">
+              <h6 id="autor_bio">Biografia:<br><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
+                id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
+                dignissimos qui laudantium. <br><br>
+              
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias laudantium reiciendis ut provident. 
+                Fuga dolores aut, necessitatibus in atque reprehenderit nostrum exercitationem soluta possimus, 
+                praesentium quasi cum laborum nesciunt doloribus.</h6>
             </div>
           </div>
         </div>
       </div>
-    </main>
-    <footer>
-
-    </footer>
+      <div class="row">
+        <h3 id="obras_text">Obras literarias</h3>
+      </div>
+      <div class="row">
+        <table>
+          <tbody>
+            <tr>
+              <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/img/escritor/Libro 1.jpg" alt="..." width="120" height="180"></button></td>
+              <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/img/escritor/Libro 2.jpg" alt="..." width="120" height="180"></button></td>
+              <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/img/escritor/Libro 3.png" alt="..." width="120" height="180"></button></td>
+              <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/img/escritor/Libro 1.jpg" alt="..." width="120" height="180"></button></td>
+              <td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/img/escritor/Libro 2.jpg" alt="..." width="120" height="180"></button></td>
+              <td><a href="/PaginaInicial.html"><img src="/img/genero/flechita.jpg" alt="..." width="120"></a></td>
+            </tr>
+            <tr>
+              <td id="book_title"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">El silmarillion</button></td>
+              <td id="book_title"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">El hobbit</button></td>
+              <td id="book_title"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">El señor de los anillos</button></td>
+              <td id="book_title"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">El silmarillion</button></td>
+              <td id="book_title"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">El hobbit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nombre libro</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4">
+                <img src="/img/escritor/portada_generica.png" alt="...">
+              </div>
+              <div class="col-8">
+                <h1>Titulo del libro</h1>
+              </div>
+            <div class="row">
+              <div class="col-12">
+                <h6 id="modal_synopsis">Sinopsis:<br><br>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
+                  id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
+                  dignissimos qui laudantium.</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </main>
+  <footer>
+    ---> [FOOTER] Info de contacto <---
+  </footer>
 </body>
 </html>

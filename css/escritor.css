@@ -23,3 +23,18 @@ body {
     padding-top: 4.5%;
     text-align: left;
 }
+
+#obras_text {
+    display: block;
+    padding-top: 1%;
+    padding-left: 2.5%;
+    text-align: left;
+}
+
+#book_title {
+    font-family:'Times New Roman', Times, serif;
+}
+
+#modal_synopsis {
+    padding-top: 10%;
+}
