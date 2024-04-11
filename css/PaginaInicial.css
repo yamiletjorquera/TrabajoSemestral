@@ -1,8 +1,7 @@
-body {
-   background-color: burlywood;
-}
- 
+
 img{
     opacity: 50%;
 }
-h6{font-style: italic;}
+body{
+   font-style: italic ;
+}
