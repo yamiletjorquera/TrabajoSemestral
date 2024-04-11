@@ -33,9 +33,15 @@ body {
 
 #book_title {
     font-family:'Times New Roman', Times, serif;
+    margin-bottom: 0px;
 }
 
 #modal_synopsis {
     padding-top: 10%;
     padding-bottom: 2.5%;
+}
+
+#card {
+    padding: 0px;
+    width: 175px;
 }
