@@ -10,36 +10,59 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <header>
-    <!-- NavBar inicio -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+  <!-- Modal Logging -->
+  <div class="modal fade" id="LoggingModal" tabindex="-1" aria-labelledby="LoggingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="LoggingModalLabel">Inicio de sesión</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1">
+              <div id="emailHelp" class="form-text">No compartas tu contraseña con desconocidos.</div>
+            </div>
+            <button type="submit" class="btn btn-primary" disabled>Enviar</button>
           </form>
         </div>
       </div>
-    </nav>
-    <!-- NavBar fin -->
+    </div>
+  </div>
+  <!-- Modal Logging -->
+  <!-- NavBar inicio -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+      </div>
+    </div>
+  </nav>
+  <!-- NavBar fin -->
 </header>
 <body>
     <main>

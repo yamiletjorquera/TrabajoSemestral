@@ -11,6 +11,32 @@
 </head>
 <body>
   <header>
+    <!-- Modal Logging -->
+    <div class="modal fade" id="LoggingModal" tabindex="-1" aria-labelledby="LoggingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="LoggingModalLabel">Inicio de sesión</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+                <div id="emailHelp" class="form-text">No compartas tu contraseña con desconocidos.</div>
+              </div>
+              <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Logging -->
     <!-- NavBar inicio -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -33,10 +59,7 @@
               <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+          <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
         </div>
       </div>
     </nav>
@@ -160,8 +183,8 @@
         </div>
       </div>
     </div>
-  <!-- Modal -->
   </div>
+  <!-- Modal -->
   </main>
   <footer>
     ---> [FOOTER] Info de contacto <---
