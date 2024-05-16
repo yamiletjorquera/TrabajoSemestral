@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
-
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -17,34 +16,29 @@
                     <h4>Formulario de registro</h4>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="text" class="form-control" id="txtRut" name="txtRut" placeholder="Ingrese su rut"
-                        required>
+                    <input type="text" class="form-control" id="txtRut" name="txtRut" placeholder="Ingrese su rut" required>
                     <label for="txtRut">Rut</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre"
-                        required>
+                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="Nombre" required>
                     <label for="txtNombre">Nombre</label>
                 </div>
                 <div class="row mx-auto">
                     <div class="col mb-3">
                         <div class="form-floating w-50 ms-auto">
-                            <input type="text" class="form-control" id="txtAppaterno" name="txtAppaterno"
-                                placeholder="Apellido paterno" required>
+                            <input type="text" class="form-control" id="txtAppaterno" name="txtAppaterno" placeholder="Apellido paterno" required>
                             <label for="txtAppaterno">Apellido paterno</label>
                         </div>
                     </div>
                     <div class="col mb-3">
                         <div class="form-floating w-50">
-                            <input type="text" class="form-control" id="txtApmaterno" name="txtApmaterno"
-                                placeholder="Apellido materno" required>
+                            <input type="text" class="form-control" id="txtApmaterno" name="txtApmaterno" placeholder="Apellido materno" required>
                             <label for="txtApmaterno">Apellido materno</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="date" class="form-control" id="txtFecha" name="txtFecha"
-                        placeholder="Fecha de Nacimiento" required>
+                    <input type="date" class="form-control" id="txtFecha" name="txtFecha" placeholder="Fecha de Nacimiento" required>
                     <label for="txtFecha">Fecha de Nacimiento</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
@@ -61,8 +55,7 @@
                     <label for="txtMail">Correo</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="number" class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Telefono"
-                        required>
+                    <input type="number" class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Telefono" required>
                     <label for="txtTelefono">Telefono</label>
                 </div>
                 <div class="w-50 mx-auto mb-3">
@@ -76,10 +69,60 @@
         </div>
     </div>
 
-    <script src=" ../js/bootstrap/bootstrap.bundle.min.js"> </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+        document.getElementById
+            document.getElementById("btnValidar").addEventListener("click", function () {
+                let rut = document.getElementById("txtRut").value;
+                let nombre = document.getElementById("txtNombre").value;
+                let appaterno = document.getElementById("txtAppaterno").value;
+                let apmaterno = document.getElementById("txtApmaterno").value;
+                let fecha = document.getElementById("txtFecha").value;
+                let genero = document.getElementById("optGenero").value;
+                let correo = document.getElementById("txtMail").value;
+                let telefono = document.getElementById("txtTelefono").value;
+
+                let regexRut = /^[0-9]+-[0-9kK]{1}$/;
+                let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                let regexTelefono = /^[0-9]+$/;
+
+                if (!regexRut.test(rut)) {
+                    alert("El RUT ingresado no es válido.");
+                    return;
+                }
+                if (nombre.trim() === "") {
+                    alert("El campo Nombre es obligatorio.");
+                    return;
+                }
+                if (appaterno.trim() === "") {
+                    alert("El campo Apellido Paterno es obligatorio.");
+                    return;
+                }
+                if (apmaterno.trim() === "") {
+                    alert("El campo Apellido Materno es obligatorio.");
+                    return;
+                }
+                if (fecha === "") {
+                    alert("El campo Fecha de Nacimiento es obligatorio.");
+                    return;
+                }
+                if (genero === "Seleccione") {
+                    alert("Debe seleccionar un género.");
+                    return;
+                }
+                if (!regexEmail.test(correo)) {
+                    alert("El correo electrónico ingresado no es válido.");
+                    return;
+                }
+                if (!regexTelefono.test(telefono)) {
+                    alert("El teléfono ingresado no es válido.");
+                    return;
+                }
+
+                alert("Formulario validado correctamente.");
+            });
     </script>
-    <script src="../js/jquery/func.js"></script>
 </body>
 
 </html>
