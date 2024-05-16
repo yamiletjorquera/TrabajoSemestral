@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="/css/Escritor.css">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
   <header>
@@ -47,16 +46,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
+                <a class="nav-link" href="/PaginaInicial.html">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Explorar
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/Paginas/Mostnew.html">Agregados recientemente</a></li>
+                    <li><a class="dropdown-item" href="/Paginas/Generos.html">Busqueda por genero</a></li>
+                    <li><a class="dropdown-item" href="/Paginas/Writers.html">Escritores populares</a></li>
+                    </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
+                <a class="nav-link disabled" href="#">Sobre nosotros</a>
             </li>
           </ul>
           <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
@@ -68,126 +71,136 @@
   <main>
     <div class="conteiner text-center">
       <div class="row">
-        <div class="col-2 h-100">
-          <img src="/img/escritor/Tolkien.jpg" class="rounded" alt="..." id="autor_picture">
+        <div class="col-2">
+          <img src="/img/escritor/portada_generica.png" class="rounded" alt="..." id="author_picture">
         </div>
         <div class="col-10">
-          <div class="row h-100">
+          <div class="row">
             <div class="col-10">
-              <h1 id="autor_name">J. R. R. Tolkien</h1>
-            </div>
-            <div class="col-10">
-              <h6 id="autor_bio">Biografia:<br><br>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
-                id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
-                dignissimos qui laudantium. <br><br>
-              
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias laudantium reiciendis ut provident. 
-                Fuga dolores aut, necessitatibus in atque reprehenderit nostrum exercitationem soluta possimus, 
-                praesentium quasi cum laborum nesciunt doloribus.</h6>
+              <h1 id="author_name" style="margin-top: 3%;">Author Name</h1>
+              <h5 id="author_date" class="aling-baseline">??? ~ ???</h5>
+              <h6 id="author_bio" class="aling-baseline" style="margin-top: 3%;">Bio</h6>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <h3 id="obras_text">Obras literarias</h3>
+        <h3 id="obras_text">Obras publicadas:</h3>
       </div>
-      <div class="row">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 1.jpg" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El silmarillion</h4>
-                  </div>
-                </div></button>
-              </td>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 2.jpg" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El Hobbit</h4>
-                  </div>
-                </div></button>
-              </td>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 3.png" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El señor de los anillos</h4>
-                  </div>
-                </div></button>
-              </td>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 1.jpg" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El silmarillion</h4>
-                  </div>
-                </div></button>
-              </td>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 2.jpg" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El Hobbit</h4>
-                  </div>
-                </div></button>
-              </td>
-              <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#bookModal" id="card"><div class="card">
-                  <div class="card-body">
-                    <p class="card-text"><img src="/img/escritor/Libro 3.png" class="rounded-2" alt="..." width="120" height="180"></p>
-                    <h4 class="card-title" id="book_title">El señor de los anillos</h4>
-                  </div>
-                </div></button>
-                <td><a href="/PaginaInicial.html"><img src="/img/genero/flechita.jpg" alt="..." width="120"></a></td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row" id="author_works" style="margin-right: 6%; margin-left: 6%;">
+        
+      </div>
+      <div id="modals">
+
       </div>
     </div>
-  <!-- Modal -->
-  <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="bookModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="bookModalLabel"></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-4">
-                <img src="/img/escritor/portada_generica.png" alt="...">
-              </div>
-              <div class="col-8">
-                <h1>Titulo del libro</h1>
-              </div>
-            <div class="row">
-              <div class="col-12">
-                <h6 id="modal_synopsis">Sinopsis:<br><br>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem deleniti minima quibusdam molestiae sint, 
-                  id, quis, soluta modi pariatur quae recusandae accusamus eaque adipisci veritatis similique perspiciatis 
-                  dignissimos qui laudantium.</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" disabled>Agregar al carrito</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal -->
   </main>
-  <footer>
-    ---> [FOOTER] Info de contacto <---
-  </footer>
+  <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.7.1.min.js"></script>
+  <script>
+    var hash = window.location.hash;
+
+    $.get("https://openlibrary.org/authors/" + hash.slice(1) + ".json", function(data) {
+      const imgUrl = "https://covers.openlibrary.org/a/olid/" + hash.slice(1) + ".jpg"
+
+      var date;
+      if (data.date != undefined) {
+        date = data.date;
+      } else if (data.birth_date != undefined && data.death_date != undefined) {
+        date = data.birth_date + " ~ " + data.death_date
+      } else if (data.birth_date != undefined && data.death_date === undefined) {
+        date = data.birth_date + " ~ ???"
+      } else {
+        date = "??? ~ ???";
+      };
+
+      var bio;
+      if (data.bio != undefined) {
+        bio = data.bio;
+      } else {
+        bio = " "
+      }
+
+      $("#author_name").text(data.name);
+      $("#author_date").text(date);
+      $("#author_bio").text(bio);
+      $("#author_picture").attr("src", imgUrl);
+
+      $.get("https://openlibrary.org/search.json?author=" + hash.slice(1) + "&fields=cover_i,title,author_name,first_publish_year,author_key,key,first_sentence", function(data) {
+        $.each(data.docs, function (i, tmp) {
+          if (i >= 6) {
+            return false;
+          }
+
+          const coverUrl = "https://covers.openlibrary.org/b/id/" + tmp.cover_i + ".jpg"
+          const imgElement = $("<img>").attr("src", coverUrl).addClass("card-img-top");
+          imgElement.attr("src", coverUrl);
+
+          var workString = tmp.key;
+          var workCode = workString.replace("/works/", "");
+
+          if (tmp.first_sentence === undefined) { 
+            var firstSentence = "";
+          } else if (Array.isArray(tmp.first_sentence)) {
+            var firstSentence = tmp.first_sentence[0]+"...";
+          } else {
+            var firstSentence = tmp.first_sentence+"...";
+          }
+
+          $("#author_works").append(
+            "<div class=\"col-2\" style=\"margin-bottom: 5%;\">" +
+                "<button type=\"button\" class=\"btn p-0\" data-bs-toggle=\"modal\" data-bs-target=\"#" + workCode + "\">" +
+                    "<div class=\"card\" style=\"width: 100%;\">" +
+                        imgElement.prop('outerHTML') +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\"><b>"+tmp.title+"</b></h4>" +
+                            "<p class=\"card-text\"><b>"+tmp.author_name[0]+"</b><br>"+tmp.first_publish_year+"</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</button>" +
+            "</div>"
+          )
+
+          $("#modals").append(
+            "<div class=\"modal fade\" id=" + workCode + " aria-labelledby=\"bookModalLabel\" aria-hidden=\"true\">" +
+                "<div class=\"modal-dialog\">" +
+                    "<div class=\"modal-content\">" +
+                        "<div class=\"modal-header\">" +
+                            "<h1 class=\"modal-title fs-5\" id=\"bookModalLabel\"></h1>" +
+                            "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>" +
+                        "</div>" +
+                        "<div class=\"modal-body\">" +
+                            "<div class=\"container-fluid\">" +
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-4\">" +
+                                        imgElement.prop('outerHTML') +
+                                    "</div>" +
+                                    "<div class=\"col-8\">" +
+                                        "<h1>" + tmp.title + "</h1>" +
+                                        "<a href=\"../paginas/escritor.html#" + tmp.author_key +"\" class=\"link-underline link-underline-opacity-0 link-underline-opacity-100-hover fst-italic fw-medium\" id=\"author_link\"><h4><br>" + tmp.author_name + "</h4></a>" +
+                                        "<h6>" + tmp.first_publish_year + "</h6>" +
+                                    "</div>" +
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-12\">" +
+                                    "<h6 style=\"margin-top: 2%;\">" + firstSentence + "</h6>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                        "<div class=\"modal-footer\">" +
+                            "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Cerrar</button>" +
+                            "<button type=\"button\" class=\"btn btn-primary\" disabled>Agregar al carrito</button>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+          )
+        })
+        $("#author_works").append(
+          "<a class=\"btn btn-dark\" href=\"/Paginas/Mostnew.html#" + hash.slice(1) + "\" role=\"button\" style=\"margin-bottom: 2%\">⟱</button>"
+        )
+      })
+    })
+  </script>
 </body>
 </html>

@@ -6,7 +6,6 @@
     <title>El Arte de Leer y Aprender</title>
     <link rel="stylesheet" href="css/PaginaInicial.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head> 
 <header>
   <!-- Modal Logging -->
@@ -38,23 +37,27 @@
   <!-- NavBar inicio -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer y Aprender</a>
+      <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
+              <a class="nav-link" href="/PaginaInicial.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Explorar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/Paginas/Mostnew.html">Agregados recientemente</a></li>
+                  <li><a class="dropdown-item" href="/Paginas/Generos.html">Busqueda por genero</a></li>
+                  <li><a class="dropdown-item" href="/Paginas/Writers.html">Escritores populares</a></li>
+                  </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
+              <a class="nav-link disabled" href="#">Sobre nosotros</a>
           </li>
         </ul>
         <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
@@ -63,7 +66,6 @@
   </nav>
   <!-- NavBar fin -->
 </header>
-
 <body>
   <!--Carrusel--> 
   <div id="carouselExample" class="carousel slide">
@@ -87,19 +89,20 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-      <h4>Contactanos: </h4>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Instagram</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Facebook</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Whatsapp Empresa</a>
-        </li><li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">...</a>
-        </li>
-      </ul>
+    <h4>Contactanos: </h4>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Instagram</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Facebook</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">Whatsapp Empresa</a>
+      </li><li class="nav-item">
+        <a class="nav-link disabled" aria-disabled="true">...</a>
+      </li>
+    </ul>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

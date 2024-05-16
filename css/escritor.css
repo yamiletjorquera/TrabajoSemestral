@@ -1,47 +1,34 @@
-body {
-    margin: 0%;
+#body {
+    display: block;
 }
 
-#autor_picture {
+#author_picture {
     max-width: 75%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
     margin-bottom: 10%;
-    height: auto;
 }
 
-#autor_name {
+#author_name, #author_date, #author_bio {
     display: block;
-    padding-top: 2.5%;
     text-align: left;
-}
-
-#autor_bio {
-    display: block;
-    padding-top: 4.5%;
-    text-align: left;
+    padding: 0%;
 }
 
 #obras_text {
-    display: block;
     padding-top: 1%;
     padding-left: 2.5%;
+    margin-bottom: 2%;
     text-align: left;
 }
 
-#book_title {
-    font-family:'Times New Roman', Times, serif;
-    margin-bottom: 0px;
+#modals {
+    display: block;
+    text-align: left;
 }
 
-#modal_synopsis {
-    padding-top: 10%;
-    padding-bottom: 2.5%;
-}
-
-#card {
-    padding: 0px;
-    width: 175px;
+#author_link {
+    color: rgb(0, 4, 36);
 }

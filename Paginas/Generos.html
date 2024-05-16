@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALA | Recientes</title>
+
+    <link rel="stylesheet" href="/css/mostnew.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <!-- Modal Logging -->
+        <div class="modal fade" id="LoggingModal" tabindex="-1" aria-labelledby="LoggingModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="LoggingModalLabel">Inicio de sesión</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div id="emailHelp" class="form-text">No compartas tu contraseña con desconocidos.</div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Logging -->
+        <!-- NavBar inicio -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/PaginaInicial.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Explorar
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/Paginas/Mostnew.html">Agregados recientemente</a></li>
+                        <li><a class="dropdown-item" href="/Paginas/Generos.html">Busqueda por genero</a></li>
+                        <li><a class="dropdown-item" href="/Paginas/Writers.html">Escritores populares</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Sobre nosotros</a>
+                </li>
+              </ul>
+              <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+            </div>
+          </div>
+        </nav>
+        <!-- NavBar fin -->
+    </header>
+    <main>
+      <div id="genres">
+
+      </div>
+      <div id="modals">
+
+      </div>
+    </main>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        let genres = ["romance", "history", "science_fiction", "biography", "poetry"];
+
+        for (let iter = 0; iter <= genres.length; iter++) {
+          $.get("https://openlibrary.org/search.json?subject=" + genres[iter] + "&fields=cover_i,title,author_name,first_publish_year,author_key,key,first_sentence", function(data) {
+            $("#genres").append(
+              "<h2 style=\"margin-bottom: 1%; margin-top: 3%; margin-left: 5.5%;\">" + genres[iter].charAt(0).toUpperCase() + genres[iter].slice(1) + ":</h2>" +
+              "<div class=\"row\" id=" + genres[iter] + " style=\"margin-right: 6%; margin-left: 6%;\"></div>" +
+              "<div class=\"d-grid gap-2\"style=\"margin-right: 6%; margin-left: 6%;\">" +
+                "<a class=\"btn btn-dark\" href=\"/Paginas/Mostnew.html#genre_" + genres[iter] + "\" role=\"button\" style=\"margin-bottom: 2%\">⟱</button>" +
+              "</div>"
+            );
+
+            $.each(data.docs, function (i, tmp) {
+              if (i >= 6) {
+                return false;
+              }
+
+              const coverUrl = "https://covers.openlibrary.org/b/id/" + tmp.cover_i + ".jpg"
+              const imgElement = $("<img>").attr("src", coverUrl).addClass("card-img-top");
+              imgElement.attr("src", coverUrl);
+
+              var workString = tmp.key;
+              var workCode = workString.replace("/works/", "");
+
+              if (tmp.first_sentence === undefined) { 
+                var firstSentence = "";
+              } else if (Array.isArray(tmp.first_sentence)) {
+                var firstSentence = tmp.first_sentence[0]+"...";
+              } else {
+                var firstSentence = tmp.first_sentence+"...";
+              }
+
+              $("#" + genres[iter]).append(
+                "<div class=\"col-2\" style=\"margin-bottom: 5%;\">" +
+                    "<button type=\"button\" class=\"btn p-0\" data-bs-toggle=\"modal\" data-bs-target=\"#" + workCode + "\">" +
+                        "<div class=\"card\" style=\"width: 100%;\">" +
+                            imgElement.prop('outerHTML') +
+                            "<div class=\"card-body\">" +
+                                "<h4 class=\"card-title\"><b>" + tmp.title + "</b></h4>" +
+                                "<p class=\"card-text\"><b>" + tmp.author_name[0] + "</b><br>"+tmp.first_publish_year+"</p>" +
+                            "</div>" +
+                        "</div>" +
+                    "</button>" +
+                "</div>"
+              )
+
+              $("#modals").append(
+                  "<div class=\"modal fade\" id=" + workCode + " aria-labelledby=\"bookModalLabel\" aria-hidden=\"true\">" +
+                      "<div class=\"modal-dialog\">" +
+                          "<div class=\"modal-content\">" +
+                              "<div class=\"modal-header\">" +
+                                  "<h1 class=\"modal-title fs-5\" id=\"bookModalLabel\"></h1>" +
+                                  "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>" +
+                              "</div>" +
+                              "<div class=\"modal-body\">" +
+                                  "<div class=\"container-fluid\">" +
+                                      "<div class=\"row\">" +
+                                          "<div class=\"col-4\">" +
+                                              imgElement.prop('outerHTML') +
+                                          "</div>" +
+                                          "<div class=\"col-8\">" +
+                                              "<h1>" + tmp.title + "</h1>" +
+                                              "<a href=\"../paginas/escritor.html#" + tmp.author_key +"\" class=\"link-underline link-underline-opacity-0 link-underline-opacity-100-hover fst-italic fw-medium\" id=\"author_link\"><h4><br>" + tmp.author_name + "</h4></a>" +
+                                              "<h6>" + tmp.first_publish_year + "</h6>" +
+                                          "</div>" +
+                                      "<div class=\"row\">" +
+                                          "<div class=\"col-12\">" +
+                                          "<h6 style=\"margin-top: 2%;\">" + firstSentence + "...</h6>" +
+                                          "</div>" +
+                                      "</div>" +
+                                  "</div>" +
+                              "</div>" +
+                              "<div class=\"modal-footer\">" +
+                                  "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Cerrar</button>" +
+                                  "<button type=\"button\" class=\"btn btn-primary\" disabled>Agregar al carrito</button>" +
+                              "</div>" +
+                          "</div>" +
+                      "</div>" +
+                  "</div>"
+                )
+              }
+            )
+          }
+        )
+        }
+      }
+    )
+    </script>
+</body>
+</html>

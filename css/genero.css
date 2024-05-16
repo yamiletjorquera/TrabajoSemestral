@@ -17,9 +17,9 @@ body {
     margin-bottom: 0px;
 }
 
-#genre {
+#genres {
+    display: block;
     font-family:'Verdana', Geneva, Tahoma, sans-serif;
     margin-bottom: 0px;
     text-align: left;
-    
 }

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALA | Escritores</title>
+
+    <link rel="stylesheet" href="/css/writers.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <!-- Modal Logging -->
+        <div class="modal fade" id="LoggingModal" tabindex="-1" aria-labelledby="LoggingModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="LoggingModalLabel">Inicio de sesión</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <div id="emailHelp" class="form-text">No compartas tu contraseña con desconocidos.</div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Logging -->
+        <!-- NavBar inicio -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/PaginaInicial.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Explorar
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/Paginas/Mostnew.html">Agregados recientemente</a></li>
+                        <li><a class="dropdown-item" href="/Paginas/Generos.html">Busqueda por genero</a></li>
+                        <li><a class="dropdown-item" href="/Paginas/Writers.html">Escritores populares</a></li>
+                        </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Sobre nosotros</a>
+                </li>
+              </ul>
+              <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+            </div>
+          </div>
+        </nav>
+        <!-- NavBar fin -->
+    </header>
+    <main>
+        <h2 style="margin-bottom: 1%; margin-top: 3%; margin-left: 5.5%;">Explorar:</h2>
+        <div class="row" id="lista" style="margin-right: 6%; margin-left: 6%;">
+
+        </div>
+        <div id="modals">
+
+        </div>
+    </main>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+          $.get("https://openlibrary.org/search/authors.json?q=work_count%3A[500+TO+*]&fields=name,date,birth_date,death_date,top_work,key,work_count", function(data) {
+              $.each(data.docs, function (i, tmp) {
+                if (i >= 36) {
+                  return false;
+                }
+
+                const imgUrl = "https://covers.openlibrary.org/a/olid/" + tmp.key + ".jpg"
+                const imgElement = $("<img>").attr("src", imgUrl).addClass("card-img-top");
+                imgElement.attr("src", imgUrl);
+
+                var date = " "
+                if (tmp.date != undefined) {
+                  date = tmp.date;
+                } else if (tmp.birth_date != undefined && tmp.death_date != undefined) {
+                  date = tmp.birth_date + " ~ " + tmp.death_date
+                } else if (tmp.birth_date != undefined && tmp.death_date === undefined) {
+                  date = tmp.birth_date + " ~ ???"
+                } else {
+                  date = "??? ~ ???";
+                }
+
+                $("#lista").append(
+                    "<div class=\"col-2\" style=\"margin-bottom: 5%;\">" +
+                        "<button type=\"button\" class=\"btn p-0\" data-bs-toggle=\"modal\" data-bs-target=\"#author_" + tmp.key + "\">" +
+                            "<div class=\"card\" style=\"width: 100%;\">" +
+                                imgElement.prop('outerHTML') +
+                                "<div class=\"card-body\">" +
+                                    "<h4 class=\"card-title\"><b>" + tmp.name + "</b></h4>" +
+                                    "<p class=\"card-text\">Obra destacada: <br>\"<b><i>" + tmp.top_work + "</b></i>\"</p>" +
+                                "</div>" +
+                            "</div>" +
+                        "</button>" +
+                    "</div>"
+                )
+
+                $("#modals").append(
+                    "<div class=\"modal fade\" id=author_" + tmp.key + " aria-labelledby=\"bookModalLabel\" aria-hidden=\"true\">" +
+                        "<div class=\"modal-dialog\">" +
+                            "<div class=\"modal-content\">" +
+                                "<div class=\"modal-header\">" +
+                                    "<h1 class=\"modal-title fs-5\" id=\"bookModalLabel\"></h1>" +
+                                    "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>" +
+                                "</div>" +
+                                "<div class=\"modal-body\">" +
+                                    "<div class=\"container-fluid\">" +
+                                        "<div class=\"row\">" +
+                                            "<div class=\"col-4\">" +
+                                                imgElement.prop('outerHTML') +
+                                            "</div>" +
+                                            "<div class=\"col-8\">" +
+                                                "<h1>" + tmp.name + "</h1>" +
+                                                "<h6>" + date + "</h6>" +
+                                                "<h6>" +  tmp.work_count + " Libros publicados</h6>" +
+                                                "<h4><br>Obra destacada:<br>\"<b><i>" + tmp.top_work + "</b></i>\"</h4>" +
+                                            "</div>" +
+                                        "</div>" +
+                                    "</div>" +
+                                "</div>" +
+                                "<div class=\"modal-footer\">" +
+                                    "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Cerrar</button>" +
+                                    "<a href=\"/Paginas/Escritor.html#" + tmp.key + "\" class=\"btn btn-primary\" role=\"button\">Ver más</a>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                    "</div>"
+                  )
+                }
+              )
+            }
+          )
+        }
+      )
+    </script>
+</body>
+</html>
