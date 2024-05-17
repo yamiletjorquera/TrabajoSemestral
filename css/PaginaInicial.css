@@ -4,3 +4,13 @@ img{
 body{
    font-style: italic ;
 }
+#nav-color{
+    background-color: hsl(0, 18%, 66%);
+}
+#drop-menu{
+    background-color: hsl(0, 12%, 52%);
+}
+#drop-it:hover{
+    background-color: rgb(107, 104, 102);
+    cursor: pointer;
+}
