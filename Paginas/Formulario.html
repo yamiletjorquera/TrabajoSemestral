@@ -56,15 +56,18 @@
                     <label for="txtMail">Correo</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="number" class="form-control" id="txtTelefono" name="txtTelefono" placeholder="Telefono" required>
-                    <label for="txtTelefono">Telefono</label>
+                    <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Constraseña" required>
+                    <label for="txtPassword">Constraseña</label>
+                </div>
+                <div id="warningDiv" class="alert alert-danger d-flex align-items-center d-none w-75 mx-auto mb-3" role="alert">
+
+                </div>
+                <div id="succesDiv" class="alert alert-success d-flex align-items-center d-none w-75 mx-auto mb-3" role="alert">
+                    Toda la informacion cumple con los requisitos
                 </div>
                 <div class="w-50 mx-auto mb-3">
-                    <button type="button" id="btnCarta" class="btn btn-outline-primary">Iniciar Sesion</button>
+                    <a href="../PaginaInicial.html" type="button" id="btnCarta" class="btn btn-outline-primary">Registrar Sesion</a>
                     <button type="button" id="btnValidar" class="btn btn-outline-success">Validar</button>
-                </div>
-                <div id="check">
-
                 </div>
             </form>
         </div>
@@ -73,56 +76,88 @@
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script>
-        document.getElementById
-            document.getElementById("btnValidar").addEventListener("click", function () {
-                let rut = document.getElementById("txtRut").value;
-                let nombre = document.getElementById("txtNombre").value;
-                let appaterno = document.getElementById("txtAppaterno").value;
-                let apmaterno = document.getElementById("txtApmaterno").value;
-                let fecha = document.getElementById("txtFecha").value;
-                let genero = document.getElementById("optGenero").value;
-                let correo = document.getElementById("txtMail").value;
-                let telefono = document.getElementById("txtTelefono").value;
+        let alerta = false;
+        $("#btnCarta").toggle(0);
+        document.getElementById("btnValidar").addEventListener("click", function () {
+            var alertDiv = document.getElementById("warningDiv");
 
-                let regexRut = /^[0-9]+-[0-9kK]{1}$/;
-                let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                let regexTelefono = /^[0-9]+$/;
+            let rut = document.getElementById("txtRut").value;
+            let nombre = document.getElementById("txtNombre").value;
+            let appaterno = document.getElementById("txtAppaterno").value;
+            let apmaterno = document.getElementById("txtApmaterno").value;
+            let fecha = document.getElementById("txtFecha").value;
+            let genero = document.getElementById("optGenero").value;
+            let correo = document.getElementById("txtMail").value;
+            let password = document.getElementById("txtPassword").value;
 
-                if (!regexRut.test(rut)) {
-                    alert("El RUT ingresado no es válido.");
-                    return;
-                }
-                if (nombre.trim() === "") {
-                    alert("El campo Nombre es obligatorio.");
-                    return;
-                }
-                if (appaterno.trim() === "") {
-                    alert("El campo Apellido Paterno es obligatorio.");
-                    return;
-                }
-                if (apmaterno.trim() === "") {
-                    alert("El campo Apellido Materno es obligatorio.");
-                    return;
-                }
-                if (fecha === "") {
-                    alert("El campo Fecha de Nacimiento es obligatorio.");
-                    return;
-                }
-                if (genero === "Seleccione") {
-                    alert("Debe seleccionar un género.");
-                    return;
-                }
-                if (!regexEmail.test(correo)) {
-                    alert("El correo electrónico ingresado no es válido.");
-                    return;
-                }
-                if (!regexTelefono.test(telefono)) {
-                    alert("El teléfono ingresado no es válido.");
-                    return;
-                }
+            let regexRut = /^(\d{1,3}(\.\d{3})*|\d+)-\d[kK]?$/;
+            let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let regexPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-                alert("Formulario validado correctamente.");
-            });
+            if (!regexRut.test(rut)) {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El RUT ingresado no es válido.";
+                return;
+            }
+            if (nombre.trim() === "" || nombre.length <= 4) {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El campo Nombre es obligatorio y de al menos 5 letras.";
+                return;
+            }
+            if (appaterno.trim() === "" || nombre.length <= 4) {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El campo Apellido Paterno es obligatorio y de al menos 5 letras.";
+                return;
+            }
+            if (apmaterno.trim() === "" || nombre.length <= 4) {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El campo Apellido Materno es obligatorio y de al menos 5 letras.";
+                return;
+            }
+            if (fecha === "") {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El campo Fecha de Nacimiento es obligatorio.";
+                return;
+            }
+            if (genero === "Seleccione") {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ Debe seleccionar un género.";
+                return;
+            }
+            if (!regexEmail.test(correo)) {
+                toggleAlerta(true);
+                alertDiv.textContent = "ⓘ El correo electrónico ingresado no es válido.";
+                return;
+            }
+            if (!regexPass.test(password)) {
+                toggleAlerta(true);
+                // P@ssw0rd!
+                alertDiv.textContent = "ⓘ La contraseña ingresada no es válida.";
+                return;
+            }
+
+            $("#btnCarta").toggle(500);
+            toggleAlerta(false);
+        });
+    
+        function toggleAlerta(alerta) {
+            var alertDiv = document.getElementById("warningDiv");
+            var succestDiv = document.getElementById("succesDiv");
+
+            if (alerta == true) {
+                alertDiv.classList.remove("d-none");
+                alertDiv.classList.add("d-block");
+                succestDiv.classList.remove("d-block");
+                succestDiv.classList.add("d-none");
+            } else if (alerta == false) {
+                alertDiv.classList.remove("d-block");
+                alertDiv.classList.add("d-none");
+                succestDiv.classList.remove("d-none");
+                succestDiv.classList.add("d-block");
+            }
+        };
+    </script>
+    <script>
     </script>
 </body>
 
