@@ -36,8 +36,8 @@
   </div>
   <!-- Modal Logging -->
   <!-- NavBar inicio -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid" id="nav-color">
       <a class="navbar-brand" href="/PaginaInicial.html">El Arte de Leer <br> y Aprender</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,19 +45,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Ofertas.html">Ofertas</a>
+              <a class="nav-link" href="/PaginaInicial.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Explorar
+                </a>
+                <ul class="dropdown-menu" id="drop-menu" >
+                  <li ><a id="drop-it" class="dropdown-item" href="/Paginas/Mostnew.html">Agregados recientemente</a></li>
+                  <li ><a id="drop-it" class="dropdown-item" href="/Paginas/Generos.html">Busqueda por genero</a></li>
+                  <li ><a id="drop-it" class="dropdown-item" href="/Paginas/Writers.html">Escritores populares</a></li>
+                  </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Genero.html">Genero</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Escritor.html">Escritor</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Paginas/Carrito.html">Carrito</a>
+              <a class="nav-link disabled" href="#">Sobre nosotros</a>
           </li>
         </ul>
         <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+        <a class="btn btn-primary" href="../Paginas/Formulario.html" role="button" style="margin-left: 1%;">Register</a>
+        
       </div>
     </div>
   </nav>

@@ -64,6 +64,7 @@
           </ul>
           <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
           <a class="btn btn-primary" href="../Paginas/Formulario.html" role="button" style="margin-left: 1%;">Register</a>
+          <button class="btn btn-abrir-ventana border" style="margin-left: 1%;">🛒</button> <!-- Boton carrito -->
         </div>
       </div>
     </nav>
@@ -94,6 +95,17 @@
       <div id="modals">
 
       </div>
+    </div>
+
+    <!-- DIV CARRITO -->
+    <div class="ventana-emergente">
+      <h2>Carrito de Compra</h2>
+      <ul class="list-group">
+        <li class="list-group-item">Libro 1</li>
+        <li class="list-group-item">Libro 2</li>
+        <li class="list-group-item">Libro 3</li>
+        <li class="list-group-item"><a class="btn btn-outline-info" href="../Paginas/Carrito.html">Ver más</a></li>
+      </ul>
     </div>
   </main>
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -202,6 +214,24 @@
         )
       })
     })
+  </script>
+
+  <!-- SCRIPT CARRITO -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnAbrirVentana = document.querySelector('.btn-abrir-ventana');
+      const ventanaEmergente = document.querySelector('.ventana-emergente');
+
+      btnAbrirVentana.addEventListener('click', function() {
+        ventanaEmergente.style.right = '0';
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!ventanaEmergente.contains(event.target) && !btnAbrirVentana.contains(event.target)) {
+          ventanaEmergente.style.right = '-33%';
+        }
+      });
+    });
   </script>
 </body>
 </html>
