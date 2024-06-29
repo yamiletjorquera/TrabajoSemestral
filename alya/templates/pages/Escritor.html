@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya | Escritor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/escritor.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+  <header>
+    {% include 'base/header.html'%}
+  </header>
+  <main style="background-color: rgb(148, 108, 108);">
+    <div class="conteiner text-center" >
+      <div class="row" style="border-color: black; border-width: 10px; border-style: solid; background-color: rgb(235, 207, 207);">
+        <div class="col-2" >
+          <img src="/img/escritor/portada_generica.png" class="rounded" alt="..." id="author_picture">
+        </div>
+        <div class="col-10">
+          <div class="row">
+            <div class="col-10">
+              <h1 id="author_name" style="margin-top: 3%;">Author Name</h1>
+              <h5 id="author_date" class="aling-baseline">??? ~ ???</h5>
+              <h6 id="author_bio" class="aling-baseline" style="margin-top: 3%;">Bio</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h3 id="obras_text">Obras publicadas:</h3>
+      </div>
+      <div class="row" id="author_works" style="margin-right: 6%; margin-left: 6%;">
+        
+      </div>
+      <div id="modals">
+
+      </div>
+    </div>
+    {% include 'base/carrito_desplegable.html'%}
+  </main>
+  <footer>
+    {% include 'base/footer.html'%}
+  </footer>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+  <script>
+    var hash = window.location.hash;
+
+    $.get("https://openlibrary.org/authors/" + hash.slice(1) + ".json", function(data) {
+      const imgUrl = "https://covers.openlibrary.org/a/olid/" + hash.slice(1) + ".jpg"
+
+      var date;
+      if (data.date != undefined) {
+        date = data.date;
+      } else if (data.birth_date != undefined && data.death_date != undefined) {
+        date = data.birth_date + " ~ " + data.death_date
+      } else if (data.birth_date != undefined && data.death_date === undefined) {
+        date = data.birth_date + " ~ ???"
+      } else {
+        date = "??? ~ ???";
+      };
+
+      var bio;
+      if (data.bio != undefined) {
+        bio = data.bio;
+      } else {
+        bio = " "
+      }
+
+      $("#author_name").text(data.name);
+      $("#author_date").text(date);
+      $("#author_bio").text(bio);
+      $("#author_picture").attr("src", imgUrl);
+
+      $.get("https://openlibrary.org/search.json?author=" + hash.slice(1) + "&fields=cover_i,title,author_name,first_publish_year,author_key,key,first_sentence", function(data) {
+        $.each(data.docs, function (i, tmp) {
+          if (i >= 6) {
+            return false;
+          }
+
+          const coverUrl = "https://covers.openlibrary.org/b/id/" + tmp.cover_i + ".jpg"
+          const imgElement = $("<img>").attr("src", coverUrl).addClass("card-img-top");
+          imgElement.attr("src", coverUrl);
+
+          var workString = tmp.key;
+          var workCode = workString.replace("/works/", "");
+
+          if (tmp.first_sentence === undefined) { 
+            var firstSentence = "";
+          } else if (Array.isArray(tmp.first_sentence)) {
+            var firstSentence = tmp.first_sentence[0]+"...";
+          } else {
+            var firstSentence = tmp.first_sentence+"...";
+          }
+
+          var title;
+          var i_title = 0;
+
+          if (tmp.title.length > 25) {
+            i_title = tmp.title.substring(0, 25).lastIndexOf(' ');
+            title = tmp.title.substring(0, i_title) + "...";
+          } else if (tmp.title.length > 35) {
+            title = tmp.title.substring(0, 32) + "...";
+          } else {
+            title = tmp.title;
+          }
+
+          $("#author_works").append(
+            "<div class=\"col-2\" style=\"margin-bottom: 5%;\">" +
+                "<button type=\"button\" class=\"btn p-0\" data-bs-toggle=\"modal\" data-bs-target=\"#" + workCode + "\">" +
+                    "<div class=\"card\" style=\"width: 100%;\">" +
+                        imgElement.prop('outerHTML') +
+                        "<div class=\"card-body\">" +
+                            "<h4 class=\"card-title\"><b>"+title+"</b></h4>" +
+                            "<p class=\"card-text\"><b>"+tmp.author_name[0]+"</b><br>"+tmp.first_publish_year+"</p>" +
+                        "</div>" +
+                    "</div>" +
+                "</button>" +
+            "</div>"
+          )
+
+          $("#modals").append(
+            "<div class=\"modal fade\" id=" + workCode + " aria-labelledby=\"bookModalLabel\" aria-hidden=\"true\">" +
+                "<div class=\"modal-dialog\">" +
+                    "<div class=\"modal-content\">" +
+                        "<div class=\"modal-header\">" +
+                            "<h1 class=\"modal-title fs-5\" id=\"bookModalLabel\"></h1>" +
+                            "<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>" +
+                        "</div>" +
+                        "<div class=\"modal-body\">" +
+                            "<div class=\"container-fluid\">" +
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-4\">" +
+                                        imgElement.prop('outerHTML') +
+                                    "</div>" +
+                                    "<div class=\"col-8\">" +
+                                        "<h1>" + tmp.title + "</h1>" +
+                                        "<a href=\"../escritor#" + tmp.author_key[0] +"\" class=\"link-underline link-underline-opacity-0 link-underline-opacity-100-hover fst-italic fw-medium\" id=\"author_link\"><h4><br>" + tmp.author_name + "</h4></a>" +
+                                        "<h6>" + tmp.first_publish_year + "</h6>" +
+                                    "</div>" +
+                                "<div class=\"row\">" +
+                                    "<div class=\"col-12\">" +
+                                    "<h6 style=\"margin-top: 2%;\">" + firstSentence + "</h6>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>" +
+                        "<div class=\"modal-footer\">" +
+                            "<button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Cerrar</button>" +
+                            "<button type=\"button\" class=\"btn btn-primary\" disabled>Agregar al carrito</button>" +
+                        "</div>" +
+                    "</div>" +
+                "</div>" +
+            "</div>"
+          )
+        })
+        $("#author_works").append(
+          "<a class=\"btn btn-dark\" href=\"/nuevo#" + hash.slice(1) + "\" role=\"button\" style=\"margin-bottom: 2%\">⟱</a>"
+        )
+      })
+    })
+  </script>
+
+  <!-- SCRIPT CARRITO -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnAbrirVentana = document.querySelector('.btn-abrir-ventana');
+      const ventanaEmergente = document.querySelector('.ventana-emergente');
+
+      btnAbrirVentana.addEventListener('click', function() {
+        ventanaEmergente.style.right = '0';
+      });
+
+      document.addEventListener('click', function(event) {
+        if (!ventanaEmergente.contains(event.target) && !btnAbrirVentana.contains(event.target)) {
+          ventanaEmergente.style.right = '-33%';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
