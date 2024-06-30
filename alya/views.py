@@ -24,3 +24,7 @@ def escritor(request):
 def formulario(request):
     context = {}
     return render(request, 'pages/Formulario.html', context)
+
+def crud(request):
+    context = {}
+    return render(request, 'pages/Crud.html', context)
