@@ -1,0 +1,33 @@
+img{
+    opacity: 50%;
+}
+body{
+   font-style: italic ;
+}
+#nav-color{
+    background-color: hsl(0, 18%, 66%);
+}
+#drop-menu{
+    background-color: hsl(0, 12%, 52%);
+}
+#drop-it:hover{
+    background-color: rgb(107, 104, 102);
+    cursor: pointer;
+}
+
+main{
+   background-color:  rgb(246, 226, 226);
+}
+
+.ventana-emergente {
+    position: fixed;
+    top: 0;
+    right: -33%;
+    width: 33%;
+    height: 100%;
+    background-color: #f8f9fa;
+    transition: right 0.3s ease; 
+    z-index: 9999;
+    overflow-y: auto; 
+    border-left: 1px solid #ccc; 
+  }

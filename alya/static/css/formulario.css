@@ -1,0 +1,15 @@
+body{
+    background-image: url(/img/Inicio/carrusel3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#formulario{
+    background-color: hsl(54, 100%, 96%);
+}
+
+.alert-icon {
+    width: 20px;
+    height: 20px;
+}
