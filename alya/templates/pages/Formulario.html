@@ -13,7 +13,8 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <form action="" id="formulario" class="col-6 text-center mx-auto shadow-lg mt-5">
+            <form action="{% url 'formulario' %}" method="POST"  id="formulario" class="col-6 text-center mx-auto shadow-lg mt-5">
+                {% crsf_token %}
                 <div class="my-3">
                     <h4>Formulario de registro</h4>
                 </div>
@@ -69,6 +70,9 @@
                 <div class="w-50 mx-auto mb-3">
                     <a href="../PaginaInicial.html" type="button" id="btnCarta" class="btn btn-outline-primary">Registrar Sesion</a>
                     <button type="button" id="btnValidar" class="btn btn-outline-success">Validar</button>
+                </div>
+                <div class="w-50 mx-auto mb-3">
+                    <a href="{% url 'crud' %}"><button>Lista Usuarios</button></a>
                 </div>
             </form>
         </div>
