@@ -112,7 +112,7 @@ def deletear_usuario(request, pk):
         usuario = User.objects.get(rut=pk)
         usuario.delete()
 
-        usurios = User.objects.all()
+        usuarios = User.objects.all()
         context = {
             "mensaje": "Registro eliminado",
             "usuarios": usuarios,
