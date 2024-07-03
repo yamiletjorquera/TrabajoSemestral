@@ -30,14 +30,21 @@
                             <tr>
                                 <td> {{tmp.rut}}  </td>
                                 <td> {{tmp.nombre}}  </td>
-                                <td> {{tmp.ape}}  </td>
-                                <td><button class="btn btn-warning">Modificar</button></td>
-                                <td><button class="btn btn-danger">Eliminar</button></td>
+                                <td> {{tmp.apellido_paterno}}  </td>
+                                <td><a href="{% url 'usuario_editar' pk=tmp.rut %}"><button class="btn btn-warning">
+                                    Modificar</button></a></td>
+                                <td><a href="{% url 'deletear_usuario' pk=tmp.rut %}"><button class="btn btn-danger">
+                                    Eliminar</button></a></td>
                             </tr>
                             {% endfor %}
                             {% endif %}
                         </tbody>
                     </table>
+                    {% if mensaje%}
+                    <div class="alert alert-danger w-50 mx-auto">
+                        {{mensaje}}
+                    </div>
+                    {% endif%}                    
                     <a href="{% url 'formulario' %}"><button class="btn btn-primary">Agregar usuarios</button></a>
                 </div>
             </div>

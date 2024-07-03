@@ -59,3 +59,69 @@ def formulario(request):
         obj.save()
         context = {}
         return render(request, 'pages/Formulario.html', context)
+
+
+def usuario_editar(request,pk):
+    if pk!="":
+        usuario = User.objects.get(rut=pk)
+
+        context={
+            "usuario":usuario,
+        }
+        return render(request,"pages/Formulario_editar.html",context)
+    else:
+        usuarios = User.objects.all()
+        context={
+            "mensaje": "Error, Rut no encontrado",
+            "usuarios":usuarios,
+        }
+        return render(request,"pages/Crud.html",context)
+
+
+def formulario_editar(request):
+    rut = request.POST["txtRut"]
+    nombre = request.POST["txtNombre"]
+    apPaterno = request.POST["txtAppaterno"]
+    apMaterno = request.POST["txtApmaterno"]
+    fecNac = request.POST["txtFecha"]
+    genero = request.POST["optGenero"]
+    correo = request.POST["txtMail"]    
+    contraseña = request.POST["txtPassword"]
+    activo = True
+
+    obj = User.objects.create(
+        rut=rut,
+        nombre=nombre,
+        apellido_paterno=apPaterno,
+        apellido_materno=apMaterno,
+        fecha_nacimiento=fecNac,
+        genero=genero,
+        correo=correo,
+        contraseña=contraseña,
+        activo=activo,
+    )
+    obj.save()
+    context = {
+        "usuario":obj,
+    }
+    return render(request, 'pages/Formulario_editar.html', context)
+
+
+def deletear_usuario(request, pk):
+    try:
+        usuario = User.objects.get(rut=pk)
+        usuario.delete()
+
+        usurios = User.objects.all()
+        context = {
+            "mensaje": "Registro eliminado",
+            "usuarios": usuarios,
+        }
+        return render(request, "pages/Crud.html", context)
+    except:
+        usuarios = User.objects.all()
+        context = {
+            "mensaje": "Error, Rut no encontrado",
+            "usuarios": usuarios,
+        }
+        return render(request, "pages/Crud.html", context)

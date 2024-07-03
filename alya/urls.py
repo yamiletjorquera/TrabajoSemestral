@@ -10,4 +10,7 @@ urlpatterns = [
     path('escritor', views.escritor, name='escritor'),
     path('formulario', views.formulario, name='formulario'),
     path('crud', views.crud, name='crud'),
+    path('usuario_editar/<str:pk>', views.usuario_editar, name='usuario_editar'),
+    path('formulario_editar', views.formulario_editar, name='formulario_editar'),
+    path('deletear_usuario', views.deletear_usuario, name='deletear_usuario'),
 ]
