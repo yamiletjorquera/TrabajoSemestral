@@ -14,4 +14,5 @@ urlpatterns = [
     path('formulario_editar', views.formulario_editar, name='formulario_editar'),
     path('deletear_usuario/<str:pk>', views.deletear_usuario, name='deletear_usuario'),
     path('logout/', views.logout_view, name='logout'),
+    path('carrito/', views.carrito, name='carrito'),
 ]
