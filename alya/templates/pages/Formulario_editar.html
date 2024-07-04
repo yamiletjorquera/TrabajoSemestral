@@ -16,10 +16,10 @@
             <form action="{% url 'formulario_editar' %}" method="POST"  id="formulario" class="col-6 text-center mx-auto shadow-lg mt-5">
                 {% csrf_token %}
                 <div class="my-3">
-                    <h4>Formulario de registro</h4>
+                    <h4>Formulario de edicion</h4>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="text" class="form-control" value="{{usuario.rut}}" id="txtRut" name="txtRut" placeholder="Ingrese su rut" required>
+                    <input type="text" class="form-control" value="{{usuario.rut}}" id="txtRut" name="txtRut" placeholder="Ingrese su rut" readonly>
                     <label for="txtRut">Rut</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
@@ -41,19 +41,29 @@
                     </div>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="date" value={{usuario.fecha_nacimiento}} class="form-control"  id="txtFecha" name="txtFecha" placeholder="Fecha de Nacimiento" required>
+                    <input type="date" value={{usuario.fecha_nacimiento|date:"Y-m-d"}} class="form-control"  id="txtFecha" name="txtFecha" placeholder="Fecha de Nacimiento" required>
                     <label for="txtFecha">Fecha de Nacimiento</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
                     <select class="form-select" name="optGenero" id="optGenero">
                         <option>Seleccione</option>
-                        {% for tmp in ["Otro", "Femenino", "Masculino"] %}
-                        {% if tmp == usuario.genero %}
-                            <option selected>{{tmp}}</option>
+                        {% if "Otros" == usuario.genero %}
+                            <option selected>Otros</option>
+                            <option>Femenino</option>
+                            <option>Masculino</option>
+                        {% elif "Femenino" == usuario.genero %}
+                            <option>Otros</option>
+                            <option selected>Femenino</option>
+                            <option>Masculino</option>
+                        {% elif "Masculino" == usuario.genero %}
+                            <option>Otros</option>
+                            <option>Femenino</option>
+                            <option selected>Masculino</option>
                         {% else %}
-                            <option>{{tmp}}</option>
+                            <option>Otros</option>
+                            <option>Femenino</option>
+                            <option>Masculino</option>
                         {% endif %}
-                        {% endfor %}
                     </select>
                     <label for="optGenero">Genero:</label>
                 </div>
@@ -72,7 +82,7 @@
                     Toda la informacion cumple con los requisitos
                 </div>
                 <div class="w-50 mx-auto mb-3">
-                    <a href="/inicio" type="button" id="btnCarta" class="btn btn-outline-primary">Registrar Sesion</a>
+                    <button type="submit" id="btnCarta" class="btn btn-outline-primary">Modificar Usuario</button>
                     <button type="button" id="btnValidar" class="btn btn-outline-success">Validar</button>
                 </div>
                 <div class="w-50 mx-auto mb-3">

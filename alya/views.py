@@ -79,32 +79,34 @@ def usuario_editar(request,pk):
 
 
 def formulario_editar(request):
-    rut = request.POST["txtRut"]
-    nombre = request.POST["txtNombre"]
-    apPaterno = request.POST["txtAppaterno"]
-    apMaterno = request.POST["txtApmaterno"]
-    fecNac = request.POST["txtFecha"]
-    genero = request.POST["optGenero"]
-    correo = request.POST["txtMail"]    
-    contraseña = request.POST["txtPassword"]
-    activo = True
+    if request.method=="POST":
+        rut = request.POST["txtRut"]
+        nombre = request.POST["txtNombre"]
+        apPaterno = request.POST["txtAppaterno"]
+        apMaterno = request.POST["txtApmaterno"]
+        fecNac = request.POST["txtFecha"]
+        genero = request.POST["optGenero"]
+        correo = request.POST["txtMail"]    
+        contraseña = request.POST["txtPassword"]
+        activo = True
 
-    obj = User.objects.create(
-        rut=rut,
-        nombre=nombre,
-        apellido_paterno=apPaterno,
-        apellido_materno=apMaterno,
-        fecha_nacimiento=fecNac,
-        genero=genero,
-        correo=correo,
-        contraseña=contraseña,
-        activo=activo,
-    )
-    obj.save()
-    context = {
-        "usuario":obj,
-    }
-    return render(request, 'pages/Formulario_editar.html', context)
+
+        obj = User(
+            rut=rut,
+            nombre=nombre,
+            apellido_paterno=apPaterno,
+            apellido_materno=apMaterno,
+            fecha_nacimiento=fecNac,
+            genero=genero,
+            correo=correo,
+            contraseña=contraseña,
+            activo=activo,
+        )
+        obj.save()
+        context = {
+            "usuario":obj,
+        }
+        return render(request, 'pages/Formulario_editar.html', context)
 
 
 def deletear_usuario(request, pk):
