@@ -1,26 +1,143 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import User
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+
 def index(request):
-    context = {}
-    return render(request, 'pages/index.html', context)
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/index.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/index.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/index.html",context)
 
 def mostnew(request):
-    context = {}
-    return render(request, 'pages/Mostnew.html', context)
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/Mostnew.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/Mostnew.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/Mostnew.html",context)
 
 def writers(request):
-    context = {}
-    return render(request, 'pages/Writers.html', context)
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/Writers.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/Writers.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/Writers.html",context)
 
 def generos(request):
-    context = {}
-    return render(request, 'pages/Generos.html', context)
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/Generos.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/Generos.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/Generos.html",context)
 
 def escritor(request):
-    context = {}
-    return render(request, 'pages/Escritor.html', context)
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/Escritor.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/Escritor.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/Escritor.html",context)
 
 def crud(request):
     usuarios = User.objects.all()

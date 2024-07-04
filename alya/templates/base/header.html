@@ -7,17 +7,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
-            <div id="emailHelp" class="form-text">No compartas tu contraseña con desconocidos.</div>
-        </div>
-        <button type="submit" class="btn btn-primary" disabled>Enviar</button>
+        <form action="{% url 'index' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="txtUser">Usuario</label>
+            <input type="text" class="form-control" id="txtUser" name="txtUser" placeholder="admin" required>
+          </div>
+          <div class="mb-3">
+            <label for="txtPass">Constraseña</label>
+            <input type="password" class="form-control" id="txtPass" name="txtPass" placeholder="P@ssw0rd!" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <a class="btn btn-outline-primary" href="{% url 'formulario' %}" role="button">Register</a>
         </form>
     </div>
     </div>
@@ -50,8 +51,20 @@
               <a class="nav-link disabled" href="#">Sobre nosotros</a>
           </li>
         </ul>
-        <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
-        <a class="btn btn-primary" href="{% url 'formulario' %}" role="button" style="margin-left: 1%;">Register</a>
+        {% if mensaje %}
+        <div class='{{design}}' style="margin-top: 0.1%; margin-bottom: 0.1%;">
+            {{mensaje}}
+        </div>
+        {% endif%}
+        
+        {% if user.is_authenticated %}
+        <div class="badge">
+          <h5>{{user}}</h5>
+        </div>
+        <a class="btn btn-warning" href="{% url 'logout' %}" role="button">Logout</a>
+        {% else %}
+        <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+        {% endif%}
         <button class="btn btn-abrir-ventana border" style="margin-left: 1%;">🛒</button>  <!-- Boton carrito -->
       </div>
     </div>
