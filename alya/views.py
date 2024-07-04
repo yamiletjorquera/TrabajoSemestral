@@ -35,6 +35,32 @@ def index(request):
             }
             return render(request,"pages/index.html",context)
 
+def carrito(request):
+    if request.method != "POST":
+        context = {
+
+        }
+        return render(request,"pages/Carrito.html",context)
+    else:
+        username = request.POST["txtUser"]
+        password = request.POST["txtPass"]
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+
+            usuarios = User.objects.all()
+            context = {
+                "usuarios":usuarios,
+            }
+            return render(request,"pages/Carrito.html",context)
+        else:
+            context = {
+                "mensaje":"Correo o contraseña incorrecta",
+                "design":"alert alert-danger w-20 mx-3 text-center",
+            }
+            return render(request,"pages/Carrito.html",context)
+
 def mostnew(request):
     if request.method != "POST":
         context = {
@@ -139,6 +165,7 @@ def escritor(request):
             }
             return render(request,"pages/Escritor.html",context)
 
+@login_required
 def crud(request):
     usuarios = User.objects.all()
     context = {
@@ -147,6 +174,7 @@ def crud(request):
 
     return render(request, 'pages/Crud.html', context)
 
+@login_required
 def formulario(request):
     if request.method != "POST":
         context = {}
@@ -177,7 +205,7 @@ def formulario(request):
         context = {}
         return render(request, 'pages/Formulario.html', context)
 
-
+@login_required
 def usuario_editar(request,pk):
     if pk!="":
         usuario = User.objects.get(rut=pk)
@@ -194,7 +222,7 @@ def usuario_editar(request,pk):
         }
         return render(request,"pages/Crud.html",context)
 
-
+@login_required
 def formulario_editar(request):
     if request.method=="POST":
         rut = request.POST["txtRut"]
@@ -225,7 +253,7 @@ def formulario_editar(request):
         }
         return render(request, 'pages/Formulario_editar.html', context)
 
-
+@login_required
 def deletear_usuario(request, pk):
     try:
         usuario = User.objects.get(rut=pk)

@@ -47,23 +47,23 @@
                 <li ><a id="drop-it" class="dropdown-item" href="../escritores">Escritores populares</a></li>
                 </ul>
           </li>
-          <li class="nav-item">
-              <a class="nav-link disabled" href="#">Sobre nosotros</a>
-          </li>
         </ul>
         {% if mensaje %}
-        <div class='{{design}}' style="margin-top: 0.1%; margin-bottom: 0.1%;">
-            {{mensaje}}
-        </div>
+          <div class='{{design}}' style="margin-top: 0.1%; margin-bottom: 0.1%;">
+              {{mensaje}}
+          </div>
         {% endif%}
         
         {% if user.is_authenticated %}
-        <div class="badge">
-          <h5>{{user}}</h5>
-        </div>
-        <a class="btn btn-warning" href="{% url 'logout' %}" role="button">Logout</a>
+          <div class="badge">
+            <h5>{{user}}</h5>
+          </div>
+          <a class="btn btn-warning" href="{% url 'logout' %}" role="button" style="margin-left: 0.5%">Logout</a>
+          {% if user.username == "admin"%}
+          <a class="btn btn-dark" href="{% url 'crud' %}" role="button" style="margin-left: 1%">CRUD</a>
+          {% endif%}
         {% else %}
-        <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+          <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
         {% endif%}
         <button class="btn btn-abrir-ventana border" style="margin-left: 1%;">🛒</button>  <!-- Boton carrito -->
       </div>
