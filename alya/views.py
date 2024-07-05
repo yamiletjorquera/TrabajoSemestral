@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
-from .models import User
+from .models import Usuario
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 # Create your views here.
 def logout_view(request):
@@ -23,7 +24,7 @@ def index(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -49,7 +50,7 @@ def carrito(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -75,7 +76,7 @@ def mostnew(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -101,7 +102,7 @@ def writers(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -127,7 +128,7 @@ def generos(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -153,7 +154,7 @@ def escritor(request):
         if user is not None:
             login(request, user)
 
-            usuarios = User.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
                 "usuarios":usuarios,
             }
@@ -167,7 +168,7 @@ def escritor(request):
 
 @login_required
 def crud(request):
-    usuarios = User.objects.all()
+    usuarios = Usuario.objects.all()
     context = {
         "usuarios": usuarios,
     }
@@ -190,15 +191,19 @@ def formulario(request):
         contraseña = request.POST["txtPassword"]
         activo = True
 
-        obj = User.objects.create(
+        user = User.objects.create_user(
+            username=correo,
+            password=contraseña,
+            first_name=nombre,
+            last_name=apPaterno 
+        )
+
+        obj = Usuario.objects.create(
+            user=user,
             rut=rut,
-            nombre=nombre,
-            apellido_paterno=apPaterno,
             apellido_materno=apMaterno,
             fecha_nacimiento=fecNac,
             genero=genero,
-            correo=correo,
-            contraseña=contraseña,
             activo=activo,
         )
         obj.save()
@@ -208,14 +213,14 @@ def formulario(request):
 @login_required
 def usuario_editar(request,pk):
     if pk!="":
-        usuario = User.objects.get(rut=pk)
+        usuario = Usuario.objects.get(rut=pk)
 
         context={
             "usuario":usuario,
         }
         return render(request,"pages/Formulario_editar.html",context)
     else:
-        usuarios = User.objects.all()
+        usuarios = Usuario.objects.all()
         context={
             "mensaje": "Error, Rut no encontrado",
             "usuarios":usuarios,
@@ -235,18 +240,22 @@ def formulario_editar(request):
         contraseña = request.POST["txtPassword"]
         activo = True
 
+        user = User(
+            username=correo,
+            password=contraseña,
+            first_name=nombre,
+            last_name=apPaterno 
+        )
 
-        obj = User(
+        obj = Usuario(
+            user=user,
             rut=rut,
-            nombre=nombre,
-            apellido_paterno=apPaterno,
             apellido_materno=apMaterno,
             fecha_nacimiento=fecNac,
             genero=genero,
-            correo=correo,
-            contraseña=contraseña,
             activo=activo,
         )
+        user.save()
         obj.save()
         context = {
             "usuario":obj,
@@ -256,17 +265,22 @@ def formulario_editar(request):
 @login_required
 def deletear_usuario(request, pk):
     try:
-        usuario = User.objects.get(rut=pk)
+        usuario = Usuario.objects.get(rut=pk)
+
+        user = usuario.user
+
         usuario.delete()
 
-        usuarios = User.objects.all()
+        user.delete()
+
+        usuarios = Usuario.objects.all()
         context = {
             "mensaje": "Registro eliminado",
             "usuarios": usuarios,
         }
         return render(request, "pages/Crud.html", context)
     except:
-        usuarios = User.objects.all()
+        usuarios = Usuario.objects.all()
         context = {
             "mensaje": "Error, Rut no encontrado",
             "usuarios": usuarios,

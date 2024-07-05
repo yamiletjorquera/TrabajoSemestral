@@ -29,8 +29,8 @@
                             {% for tmp in usuarios%}
                             <tr>
                                 <td> {{tmp.rut}}  </td>
-                                <td> {{tmp.nombre}}  </td>
-                                <td> {{tmp.apellido_paterno}}  </td>
+                                <td> {{tmp.user.first_name}}  </td>
+                                <td> {{tmp.user.last_name}}  </td>
                                 <td><a href="{% url 'usuario_editar' pk=tmp.rut %}"><button class="btn btn-warning">
                                     Modificar</button></a></td>
                                 <td><a href="{% url 'deletear_usuario' pk=tmp.rut %}"><button class="btn btn-danger">

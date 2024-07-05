@@ -23,13 +23,13 @@
                     <label for="txtRut">Rut</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="text" class="form-control" value={{usuario.nombre}} id="txtNombre" name="txtNombre" placeholder="Nombre" required>
+                    <input type="text" class="form-control" value={{usuario.user.first_name}} id="txtNombre" name="txtNombre" placeholder="Nombre" required>
                     <label for="txtNombre">Nombre</label>
                 </div>
                 <div class="row mx-auto">
                     <div class="col mb-3">
                         <div class="form-floating w-50 ms-auto">
-                            <input type="text" class="form-control" value={{usuario.apellido_paterno}} id="txtAppaterno" name="txtAppaterno" placeholder="Apellido paterno" required>
+                            <input type="text" class="form-control" value={{usuario.user.last_name}} id="txtAppaterno" name="txtAppaterno" placeholder="Apellido paterno" required>
                             <label for="txtAppaterno">Apellido paterno</label>
                         </div>
                     </div>
@@ -68,11 +68,11 @@
                     <label for="optGenero">Genero:</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="email" class="form-control" value={{usuario.correo}} id="txtMail" name="txtMail" placeholder="Correo" required>
+                    <input type="email" class="form-control" value={{usuario.user.username}} id="txtMail" name="txtMail" placeholder="Correo" readonly>
                     <label for="txtMail">Correo</label>
                 </div>
                 <div class="form-floating w-50 mx-auto mb-3">
-                    <input type="password" class="form-control" value="{{usuario.contraseña}}" id="txtPassword" name="txtPassword" placeholder="Constraseña" required>
+                    <input type="password" class="form-control" value="{{usuario.user.password}}" id="txtPassword" name="txtPassword" placeholder="Constraseña" required>
                     <label for="txtPassword">Constraseña</label>
                 </div>
                 <div id="warningDiv" class="alert alert-danger d-flex align-items-center d-none w-75 mx-auto mb-3" role="alert">
