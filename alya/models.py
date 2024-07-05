@@ -1,14 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
+class Usuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     rut = models.CharField(primary_key=True, max_length=12)
-    nombre = models.CharField(max_length=20)
-    apellido_paterno = models.CharField(max_length=20)
     apellido_materno = models.CharField(max_length=20)
     fecha_nacimiento = models.DateField()
     genero = models.CharField(max_length=20)
-    correo = models.EmailField(max_length=100, unique=True, blank=True, null=True)
-    contraseña = models.CharField(max_length=30)
     activo = models.BooleanField()
 
     def __str__(self):
