@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alya | Carrito</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/PaginaInicial.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+</head>
+<header>
+  {% include 'base/header.html'%}
+</header>
+<body id="carrito">
+    <main>
+      <div class="container mt-5" id="container">
+        <div class="row">
+          <div class="col">
+            <table class="table table-primary border border-2 border-dark-subtle border-opacity-50">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Autor</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="cart">
+
+              </tbody>
+              <tfoot>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="d-grid gap-2">
+                    <a id="confirmarBtn" class="btn btn-success btn-lg" href="{% url 'index' %}">Confirmar</a>
+                  </div>
+                </td>
+                <td></td>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
+</body>
+<footer>
+  {% include 'base/footer.html'%}
+</footer>
+</html>

@@ -1,0 +1,74 @@
+<!-- Modal Logging -->
+<div class="modal fade" id="LoggingModal" tabindex="-1" aria-labelledby="LoggingModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="LoggingModalLabel">Inicio de sesión</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form action="{% url 'index' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="txtUser">Usuario</label>
+            <input type="text" class="form-control" id="txtUser" name="txtUser" placeholder="admin" required>
+          </div>
+          <div class="mb-3">
+            <label for="txtPass">Constraseña</label>
+            <input type="password" class="form-control" id="txtPass" name="txtPass" placeholder="P@ssw0rd!" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <a class="btn btn-outline-primary" href="{% url 'formulario' %}" role="button">Register</a>
+        </form>
+    </div>
+    </div>
+</div>
+</div>
+<!-- Modal Logging -->
+<!-- NavBar inicio -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+    <div class="container-fluid" id="nav-color">
+      <a class="navbar-brand" href="{% url 'index' %}">El Arte de Leer <br> y Aprender</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Explorar
+              </a>
+              <ul class="dropdown-menu" id="drop-menu" >
+                <li ><a id="drop-it" class="dropdown-item" href="../nuevo">Agregados recientemente</a></li>
+                <li ><a id="drop-it" class="dropdown-item" href="../generos">Busqueda por genero</a></li>
+                <li ><a id="drop-it" class="dropdown-item" href="../escritores">Escritores populares</a></li>
+                </ul>
+          </li>
+        </ul>
+        {% if mensaje %}
+          <div class='{{design}}' style="margin-top: 0.1%; margin-bottom: 0.1%;">
+              {{mensaje}}
+          </div>
+        {% endif %}
+        
+        {% if user.is_authenticated %}
+          <div class="badge">
+            <h5>{{user}}</h5>
+          </div>
+          <a class="btn btn-warning" href="{% url 'logout' %}" role="button" style="margin-left: 0.5%">Logout</a>
+          {% if user.username == "admin"%}
+          <a class="btn btn-dark" href="{% url 'crud' %}" role="button" style="margin-left: 1%">CRUD</a>
+          {% endif %}
+          {% if request.resolver_match.view_name != 'carrito' %}
+          <button class="btn btn-abrir-ventana border" style="margin-left: 1%;">🛒</button>
+          {% endif %}
+        {% else %}
+          <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#LoggingModal">Loggin</button>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  <!-- NavBar fin -->
