@@ -175,7 +175,7 @@ def crud(request):
 
     return render(request, 'pages/Crud.html', context)
 
-@login_required
+
 def formulario(request):
     if request.method != "POST":
         context = {}
