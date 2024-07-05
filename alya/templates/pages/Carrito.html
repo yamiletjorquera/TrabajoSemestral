@@ -11,67 +11,32 @@
 <header>
   {% include 'base/header.html'%}
 </header>
-<body>
+<body id="carrito">
     <main>
       <div class="container mt-5" id="container">
         <div class="row">
           <div class="col">
-            <table class="table border border-2 border-dark-subtle border-opacity-50">
+            <table class="table table-primary border border-2 border-dark-subtle border-opacity-50">
               <thead>
                 <tr>
                   <th scope="col"></th>
                   <th scope="col">Titulo</th>
                   <th scope="col">Autor</th>
-                  <th scope="col">Precio</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/silmarilion.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El Silmarillion</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/hobbit.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El Hobbit</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/rings.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El señor de los anillos</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/silmarilion.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El Silmarillion</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/hobbit.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El Hobbit</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
-                <tr>
-                  <td class="align-middle"><img src="{% static 'img/rings.webp' %}" class="rounded-2" alt="?" width="120" height="180"></td>
-                  <td class="align-middle"><h5>El señor de los anillos</h5></td>
-                  <td class="align-middle"><h6>J. R. R. Tolkien</h6></td>
-                  <td class="align-middle">$???</td>
-                </tr>
+              <tbody id="cart">
+
               </tbody>
               <tfoot>
                 <td></td>
                 <td></td>
-                <td></td>
                 <td>
                   <div class="d-grid gap-2">
-                    <button type="button" class="btn btn-success btn-lg">Confirmar</button>
+                    <a id="confirmarBtn" class="btn btn-success btn-lg" href="{% url 'index' %}">Confirmar</a>
                   </div>
                 </td>
+                <td></td>
               </tfoot>
             </table>
           </div>
@@ -83,6 +48,7 @@
     </footer>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
 </body>
 <footer>
   {% include 'base/footer.html'%}

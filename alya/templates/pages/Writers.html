@@ -13,6 +13,7 @@
         {% include 'base/header.html'%}
     </header>
     <main>
+        {% include 'base/alert.html'%}
         <h2 style="margin-bottom: 1%; margin-top: 3%; margin-left: 5.5%;">Explorar:</h2>
         <div class="row" id="lista" style="margin-right: 6%; margin-left: 6%;">
 
@@ -28,6 +29,7 @@
     </footer>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/carrito.js' %}"></script>
     <script>
       $(document).ready(function () {
           $.get("https://openlibrary.org/search/authors.json?q=work_count%3A[500+TO+*]&fields=name,date,birth_date,death_date,top_work,key,work_count", function(data) {
